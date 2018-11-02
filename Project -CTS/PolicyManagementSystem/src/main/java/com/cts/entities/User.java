@@ -31,7 +31,7 @@ public class User {
 	private String qualification;
 	private String gender;
 	private double salary;
-	@Column(name="pan_No",unique=true)
+	@Column(name="pan_no",unique=true)
 	private String panNo;
 	@Column(name="employer_type")
 	private String employerType;
@@ -40,10 +40,16 @@ public class User {
 	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinTable(name="Hint",
 	inverseJoinColumns= {@JoinColumn(name="hintPKId")},joinColumns= {@JoinColumn(name="hintId")})
-	private String hintId;
+	private int hintId;
 	@Column(name="hint_answer")
 	private String hintAnswer;
-	private String password;
+	private String passcode;
+	public String getPasscode() {
+		return passcode;
+	}
+	public void setPasscode(String passcode) {
+		this.passcode = passcode;
+	}
 	public String getUserId() {
 		return userId;
 	}
@@ -122,10 +128,10 @@ public class User {
 	public void setEmployer(String employer) {
 		this.employer = employer;
 	}
-	public String getHintId() {
+	public int getHintId() {
 		return hintId;
 	}
-	public void setHintId(String hintId) {
+	public void setHintId(int hintId) {
 		this.hintId = hintId;
 	}
 	public String getHintAnswer() {
@@ -134,12 +140,6 @@ public class User {
 	public void setHintAnswer(String hintAnswer) {
 		this.hintAnswer = hintAnswer;
 	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	
+
 
 }
