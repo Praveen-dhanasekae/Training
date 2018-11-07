@@ -1,0 +1,624 @@
+package com.com;
+
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+/**
+ * @author 687309
+ */
+@Entity
+@Table(name = "mainuser")
+public class Mainuser {
+
+    @Id
+    @GeneratedValue
+    @Column(name = "user_id")
+    private Long userid;
+
+    @Basic
+    @Column(name = "ATTRIBUTE")
+    private String firstName;
+
+    @Basic
+    private String lastName;
+
+    @Basic
+    private Date dob;
+
+    @Basic
+    private String address;
+
+    @Basic
+    private String contact_no;
+
+    @Basic
+    private String emailId;
+
+    @Basic
+    private String qualification;
+
+    @Basic
+    private String gender;
+
+    @Basic
+    private double salary;
+
+    @Basic
+    private String panNo;
+
+    @Basic
+    private String employerType;
+
+    @Basic
+    private String employer;
+
+    @Basic
+    private String hintAnswer;
+
+    @Basic
+    private String passcode;
+
+    @OneToMany
+    private List<Hint> hintId;
+
+    public Long getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Long userid) {
+        this.userid = userid;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Date getDob() {
+        return dob;
+    }
+
+    public void setDob(Date dob) {
+        this.dob = dob;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getContact_no() {
+        return contact_no;
+    }
+
+    public void setContact_no(String contact_no) {
+        this.contact_no = contact_no;
+    }
+
+    public String getEmailId() {
+        return emailId;
+    }
+
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
+    }
+
+    public String getQualification() {
+        return qualification;
+    }
+
+    public void setQualification(String qualification) {
+        this.qualification = qualification;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    public String getPanNo() {
+        return panNo;
+    }
+
+    public void setPanNo(String panNo) {
+        this.panNo = panNo;
+    }
+
+    public String getEmployerType() {
+        return employerType;
+    }
+
+    public void setEmployerType(String employerType) {
+        this.employerType = employerType;
+    }
+
+    public String getEmployer() {
+        return employer;
+    }
+
+    public void setEmployer(String employer) {
+        this.employer = employer;
+    }
+
+    public String getHintAnswer() {
+        return hintAnswer;
+    }
+
+    public void setHintAnswer(String hintAnswer) {
+        this.hintAnswer = hintAnswer;
+    }
+
+    public String getPasscode() {
+        return passcode;
+    }
+
+    public void setPasscode(String passcode) {
+        this.passcode = passcode;
+    }
+
+    public List<Hint> getHintId() {
+        if (hintId == null) {
+            hintId = new ArrayList<>();
+        }
+        return hintId;
+    }
+
+    public void setHintId(List<Hint> hintId) {
+        this.hintId = hintId;
+    }
+
+    public void addHintId(Hint hintId) {
+        getHintId().add(hintId);
+    }
+
+    public void removeHintId(Hint hintId) {
+        getHintId().remove(hintId);
+    }
+
+}
+
+
+--------------------------------------------------------------------------------------------------------------
+
+package com.com;
+
+import java.sql.Date;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+
+/**
+ * @author 687309
+ */
+@Entity
+public class Policy {
+
+    @Id
+    @GeneratedValue
+    private String policyId;
+
+    @Basic
+    @NotNull
+    private String policyName;
+
+    @Basic
+    private Date startDate;
+
+    @Basic
+    private int duration;
+
+    @Basic
+    private double InitialDeposit;
+
+    @Basic
+    private int termsPerYear;
+
+    @Basic
+    private double termAmount;
+
+    @Basic
+    private double interest;
+
+    @ManyToOne
+    private Company companyInsId;
+
+    public String getPolicyId() {
+        return policyId;
+    }
+
+    public void setPolicyId(String policyId) {
+        this.policyId = policyId;
+    }
+
+    public String getPolicyName() {
+        return policyName;
+    }
+
+    public void setPolicyName(String policyName) {
+        this.policyName = policyName;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public double getInitialDeposit() {
+        return InitialDeposit;
+    }
+
+    public void setInitialDeposit(double InitialDeposit) {
+        this.InitialDeposit = InitialDeposit;
+    }
+
+    public int getTermsPerYear() {
+        return termsPerYear;
+    }
+
+    public void setTermsPerYear(int termsPerYear) {
+        this.termsPerYear = termsPerYear;
+    }
+
+    public double getTermAmount() {
+        return termAmount;
+    }
+
+    public void setTermAmount(double termAmount) {
+        this.termAmount = termAmount;
+    }
+
+    public double getInterest() {
+        return interest;
+    }
+
+    public void setInterest(double interest) {
+        this.interest = interest;
+    }
+
+    public Company getCompanyInsId() {
+        return companyInsId;
+    }
+
+    public void setCompanyInsId(Company companyInsId) {
+        this.companyInsId = companyInsId;
+    }
+
+}
+
+--------------------------------------------------------------------------------
+
+package com.com;
+
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
+
+/**
+ * @author 687309
+ */
+@Entity
+public class PolicyPayment {
+
+    @Id
+    @GeneratedValue
+    private Long billId;
+
+    @Basic
+    @NotNull
+    private Date billDate;
+
+    @Basic
+    private Double paidAmt;
+
+    @Basic
+    private double fine;
+
+    @Basic
+    private Date DueDate;
+
+    @OneToMany
+    private List<Policy> policyId;
+
+    @ManyToMany
+    private List<Mainuser> mainusers;
+
+    public Long getBillId() {
+        return billId;
+    }
+
+    public void setBillId(Long billId) {
+        this.billId = billId;
+    }
+
+    public Date getBillDate() {
+        return billDate;
+    }
+
+    public void setBillDate(Date billDate) {
+        this.billDate = billDate;
+    }
+
+    public Optional<Double> getPaidAmt() {
+        return Optional.ofNullable(paidAmt);
+    }
+
+    public void setPaidAmt(Double paidAmt) {
+        this.paidAmt = paidAmt;
+    }
+
+    public double getFine() {
+        return fine;
+    }
+
+    public void setFine(double fine) {
+        this.fine = fine;
+    }
+
+    public Optional<Date> getDueDate() {
+        return Optional.ofNullable(DueDate);
+    }
+
+    public void setDueDate(Date DueDate) {
+        this.DueDate = DueDate;
+    }
+
+    public List<Policy> getPolicyId() {
+        if (policyId == null) {
+            policyId = new ArrayList<>();
+        }
+        return policyId;
+    }
+
+    public void setPolicyId(List<Policy> policyId) {
+        this.policyId = policyId;
+    }
+
+    public void addPolicyId(Policy policyId) {
+        getPolicyId().add(policyId);
+    }
+
+    public void removePolicyId(Policy policyId) {
+        getPolicyId().remove(policyId);
+    }
+
+    public List<Mainuser> getMainusers() {
+        if (mainusers == null) {
+            mainusers = new ArrayList<>();
+        }
+        return mainusers;
+    }
+
+    public void setMainusers(List<Mainuser> mainusers) {
+        this.mainusers = mainusers;
+    }
+
+    public void addMainuser(Mainuser mainuser) {
+        getMainusers().add(mainuser);
+    }
+
+    public void removeMainuser(Mainuser mainuser) {
+        getMainusers().remove(mainuser);
+    }
+
+}
+
+------------------------------------------------------------------
+
+package com.com;
+
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+/**
+ * @author 687309
+ */
+@Entity
+public class User_enrolled_policy {
+
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    @Basic
+    private Date enrolledDate;
+
+    @ManyToOne
+    @JoinColumn(name = "USER_ID")
+    private Mainuser userid;
+
+    @OneToMany
+    private List<Policy> policyId;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Date getEnrolledDate() {
+        return enrolledDate;
+    }
+
+    public void setEnrolledDate(Date enrolledDate) {
+        this.enrolledDate = enrolledDate;
+    }
+
+    public Mainuser getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Mainuser userid) {
+        this.userid = userid;
+    }
+
+    public List<Policy> getPolicyId() {
+        if (policyId == null) {
+            policyId = new ArrayList<>();
+        }
+        return policyId;
+    }
+
+    public void setPolicyId(List<Policy> policyId) {
+        this.policyId = policyId;
+    }
+
+    public void addPolicyId(Policy policyId) {
+        getPolicyId().add(policyId);
+    }
+
+    public void removePolicyId(Policy policyId) {
+        getPolicyId().remove(policyId);
+    }
+
+}
+
+---------------------------------------------------------------------------
+
+package com.com;
+
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
+/**
+ * @author 687309
+ */
+@Entity
+public class Company {
+
+    @Id
+    @GeneratedValue
+    private Long companyInsId;
+
+    @Basic
+    @NotNull
+    private String companyName;
+
+    public Long getCompanyInsId() {
+        return companyInsId;
+    }
+
+    public void setCompanyInsId(Long companyInsId) {
+        this.companyInsId = companyInsId;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+}
+-------------------------------------------------------------------------
+
+package com.com;
+
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+/**
+ * @author 687309
+ */
+@Entity
+public class Hint {
+
+    @Id
+    @GeneratedValue
+    private Long hintId;
+
+    @Basic
+    private String hint_des;
+
+    public Long getHintId() {
+        return hintId;
+    }
+
+    public void setHintId(Long hintId) {
+        this.hintId = hintId;
+    }
+
+    public String getHint_des() {
+        return hint_des;
+    }
+
+    public void setHint_des(String hint_des) {
+        this.hint_des = hint_des;
+    }
+
+}
+
+-------------------------------------------------
+
+
+
