@@ -1,0 +1,53 @@
+ 
+MainUser:
+mysql> INSERT INTO `mainuser` VALUES ('A-001','Praveen','Dhanasekar',24/12/1992,'Velachary-Chennai','9834526748','praveen.dhanasekhar2gmail.com','Btech','Male',25000,
+    -> 'BDIPD6273D','Private','Cognizant',1,'Dhasekhar','07NOV#111');
+
+
+mysql> INSERT INTO `mainuser` VALUES ('B-001','Gowtham,','Purushoth',02/10/1992,'Adayar-Chennai','9834599291','gowtham.purushoth@gmail.com','Btech','Male',70000,
+    -> 'ADFGT56430','Govt','Insurance',2,'Bonjo','02OCT#112');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> INSERT INTO `mainuser` VALUES ('C-001','Priya','Singh',12/08/1985,'Kota-Rajashtan','8672378819','priya.singham@gmail.com','MS','Female',125000,
+    -> 'FDSPS2357S','Self-Employeed',NULL,3,'Boggy','12SEP#113');
+
+
+
+INSERT INTO `mainuser` VALUES ('D-001','Shashank','Pathak',19/12/1995,'Jamshedpur-Rajasthan','8672378757','shanshank.pathak@gmail.com','MBA','Male',300000,
+    -> 'FDSPS5673S','Private','Cognizant',4,'Shalini','19DEC#114');
+
+
+Hint Table:
+
+ insert into hint values(2,"What is your Fathers Name?");
+ insert into hint values(3,"What is your Pets Name?");
+ insert into hint values(4,"What is your Mothers Name?");
+
+insert into hint values(5,"Who is your favourite actor Name?");
+ insert into hint values(6,"What is your school name");
+
+
+Policy_table:
+mysql> insert into policy_table values('HAR-VL-0001','HAR','HardwardVehiclePolicy',10/01/2018,6,3000,3,500,12);
+ERROR 1406 (22001): Data too long for column 'policy_name' at row 1
+mysql> insert into policy_table values('HAR-VL-0001','HAR','HardwardVehicle',10/01/2018,6,3000,3,500,12);
+Query OK, 1 row affected (0.15 sec)
+
+mysql> insert into policy_table values('LIC-HL-0001','LIC','LIC Health',07/03/2017,4,1000,3,300,9);
+Query OK, 1 row affected (0.21 sec)
+
+mysql> insert into policy_table values('SBI-RT-0001','SBI','SBIRetirement',08/05/2019,7,2000,4,500,13);
+Query OK, 1 row affected (0.14 sec)
+
+mysql> insert into policy_table values('VOY-CP-0001','VOY','VOYChildPlan',05/07/2015,5,1000,5,100,8);
+Query OK, 1 row affected (0.18 sec)
+
+
+
+
+
+
+
+
+
+
