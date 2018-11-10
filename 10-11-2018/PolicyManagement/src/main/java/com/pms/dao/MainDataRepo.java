@@ -19,7 +19,7 @@ public interface MainDataRepo  extends JpaRepository<Mainuser, String>  {
     @Query("select mu from Mainuser mu where mu.panNo = ?1 and mu.emailId= ?2")
     public Mainuser findByPanNoAndEmaiId(String pan,String email);
     
-    @Query("select mu from MAinuser mu where mu.userId like :id% order by mu.userId DESC limit 1")
+    @Query("select mu from Mainuser mu where mu.userId like :id% order by mu.userId DESC limit 1")
     public Mainuser findByUserId(@Param ("id") String a );
     
 	

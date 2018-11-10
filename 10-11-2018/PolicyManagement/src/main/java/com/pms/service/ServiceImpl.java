@@ -1,6 +1,9 @@
 package com.pms.service;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Random;
 
@@ -9,7 +12,9 @@ import org.springframework.stereotype.Service;
 
 import com.pms.Entities.LoginObject;
 import com.pms.Entities.Mainuser;
+import com.pms.Entities.PolicyTable;
 import com.pms.dao.MainDataRepo;
+import com.pms.dao.PolicyDataRepo;
 @Service
 public class ServiceImpl implements Service1{
 
@@ -17,7 +22,15 @@ public class ServiceImpl implements Service1{
 	
 	@Autowired
     private MainDataRepo dao1;
-    com.pms.Entities.Mainuser name;
+	
+	@Autowired
+	private PolicyDataRepo dao2;
+    
+	DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	
+	Mainuser name;
+    
+    
 	@Override
 	public String authenticate(LoginObject log) {
 		       
@@ -50,7 +63,7 @@ public class ServiceImpl implements Service1{
 		else if(a<=30 || a>30) b="F";
 		if(name==null) {
 			name= dao1.findByUserId(b);
-			String[] val=name.getUserId().split("-");
+				String[] val=name.getUserId().split("-");
 			user.setUserId(b+"-"+(Integer.parseInt(val[1])+1));
 			String pass=""+(new SimpleDateFormat("dd").format(cal.getTime()))+(new SimpleDateFormat("MMM").format(cal.getTime())).toLowerCase()+""
 			                      +((new Random().nextInt(998-100))+100)+"";
@@ -63,4 +76,37 @@ public class ServiceImpl implements Service1{
 	}
 	
   // Policy Registration 
+	
+	public String registerPolicy(PolicyTable obj) {
+		
+		
+		//Checks Start Date VAlidation
+		LocalDate today =  LocalDate.now(); 
+		LocalDate date = obj.getStartDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+	    if(today.isBefore(date)) return "Start date is not correct please redefine the policy";
+		
+	    // Save the object with required values. 
+	    PolicyTable tab1= dao2.findByPolicyType(obj.getPolicyType());
+		String[] val=tab1.getPolicyId().split("-");
+		obj.setPolicyId(val[0]+"-"+val[1]+"-"+(Integer.parseInt(val[2])+1));
+		dao2.saveAndFlush(obj);
+		date.plusYears(obj.getDuration());
+		//Maturity amount = (initial deposit) + (duration * term_in_years * term amount) + ((duration * term_in_years * term amount) * (interest /100))
+		return "   The policy"+ obj.getPolicyId() +"is available to the users from "+ obj.getStartDate() +" to"+ date.format(dateTimeFormatter) +
+				"This is the"+ (val[2]+1) +"th policy in the "+ obj.getPolicyType();
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

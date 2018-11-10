@@ -1,11 +1,13 @@
 package com.pms.Entities;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class PolicyRegistrationObject {
-
+  
+	private String policyId;
 	private String policyName;
-	private Date startDate;
+	private String policyType;
+	private LocalDate startDate;
 	private int duration;
 	private double intialDeposit;
 	private int termsPerYear;
@@ -19,10 +21,23 @@ public class PolicyRegistrationObject {
 	public void setPolicyName(String policyName) {
 		this.policyName = policyName;
 	}
-	public Date getStartDate() {
+	public String getPolicyId() {
+		return policyId;
+	}
+	public void setPolicyId(String policyId) {
+		this.policyId = policyId;
+	}
+	
+	public String getPolicyType() {
+		return policyType;
+	}
+	public void setPolicyType(String policyType) {
+		this.policyType = policyType;
+	}
+	public LocalDate getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(Date startDate) {
+	public void setStartDate(LocalDate startDate) {
 		this.startDate = startDate;
 	}
 	public int getDuration() {
